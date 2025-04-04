@@ -35,7 +35,7 @@ public class BattleScreen extends javax.swing.JFrame {
     }
 
     public void background(){
-        ImageIcon pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\background2.jpg");
+        ImageIcon pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/background2.jpg");
 
         // Get the image from the icon
         Image image = pic.getImage();
@@ -61,16 +61,16 @@ public class BattleScreen extends javax.swing.JFrame {
         ImageIcon pic;
         switch(option){
             case 0:
-                pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\david.jpg");
+                pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/david.jpg");
                 break;
             case 1:
-                pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\lucy.jpg");
+                pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/lucy.jpg");
                 break;
             case 2:
-                pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\david.jpg");
+                pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/david.jpg");
                 break;
             default:
-                pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\david.jpg");
+                pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/david.jpg");
                 lblPlayer.setIcon(pic);
                 lblEnemy.setIcon(pic);
                 break;
@@ -98,11 +98,11 @@ public class BattleScreen extends javax.swing.JFrame {
 
         // Set picture based on the character type (or class)
         if (enemy instanceof David) {
-            pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\david.jpg");
+            pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/david.jpg");
         } else if (enemy instanceof Lucy) {
-            pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\lucy.jpg");
+            pic = new ImageIcon("/Users/russjiehopista/IdeaProjects/EdgeRunners/assets/lucy.jpg");
         } else {
-            pic = new ImageIcon("C:\\Users\\PC\\Downloads\\EdgeRunners\\assets\\default.jpg");
+            pic = new ImageIcon("default.jpg");
         }
 
         // Resize and update the picture
@@ -121,14 +121,10 @@ public class BattleScreen extends javax.swing.JFrame {
     }
 
 
-
-
-
     public void initializeCharacters() {
         characters[0] = new David(true);
         characters[1] = new Lucy(true);
         characters[2] = new David(true);
-        // Initialize other characters similarly...
     }
 
     // Select the character to play as
@@ -146,6 +142,7 @@ public class BattleScreen extends javax.swing.JFrame {
         enemies[1] = new Lucy(false);
         enemies[2] = new David(false);
 
+        //making a random enemy generator
         // Convert the array to a list
         ArrayList<Character> enemyList = new ArrayList<>(List.of(enemies));
 
@@ -176,13 +173,17 @@ public class BattleScreen extends javax.swing.JFrame {
         prgEnemy.setValue(enemies[currentEnemyIndex].getHealth());
         prgPlayerMana.setValue(player.getMana());
         prgEnemyMana.setValue(enemies[currentEnemyIndex].getMana());
+
+        //pwede sad diri for file handling
     }
 
     // Handle the player's and enemy's turns
     public void nextTurn() {
         if (!player.isAlive()) {
             lblEnemy.setText("You lost the battle!");
+            prompt();
             return;
+            //create method for file handling
         }
 
         if (!enemies[currentEnemyIndex].isAlive()) {
@@ -254,8 +255,8 @@ public class BattleScreen extends javax.swing.JFrame {
         if (response1 == JOptionPane.NO_OPTION) {
             System.exit(0);
         } else {
-            player.setHealth(player.getMaxHealth());
-            player.setMana(player.getMaxMana());
+            player.setHealth(100);
+            player.setMana(100);
         }
     }
 
@@ -464,6 +465,7 @@ public class BattleScreen extends javax.swing.JFrame {
         // Ensure the player is alive before proceeding
         if (!player.isAlive()) {
             lblEnemy.setText("You lost the battle!");
+            prompt();
             return;
         }
 
@@ -484,6 +486,7 @@ public class BattleScreen extends javax.swing.JFrame {
         // Ensure the player is alive before proceeding
         if (!player.isAlive()) {
             lblEnemy.setText("You lost the battle!");
+            prompt();
             return;
         }
 
@@ -504,6 +507,7 @@ public class BattleScreen extends javax.swing.JFrame {
         // Ensure the player is alive before proceeding
         if (!player.isAlive()) {
             lblEnemy.setText("You lost the battle!");
+            prompt();
             return;
         }
 
